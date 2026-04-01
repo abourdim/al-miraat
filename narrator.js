@@ -113,7 +113,7 @@
 
   // ═══ VOICE SELECTION ═══
   function getLang() {
-    return (typeof lang !== 'undefined') ? lang : 'ar';
+    return (typeof currentLang !== 'undefined') ? currentLang : (typeof lang !== 'undefined') ? lang : 'ar';
   }
 
   function loadVoices() {
@@ -842,10 +842,11 @@
     updateLabels();
     setTimeout(injectSpeakButtons, 500);
     // Repopulate voices and labels when language changes
-    const origSetLang = window.setLang;
-    if (origSetLang) {
-      window.setLang = function(l) {
-        origSetLang(l);
+    const origLangFn = window.applyLanguage || window.setLang;
+    const hookName = window.applyLanguage ? 'applyLanguage' : 'setLang';
+    if (origLangFn) {
+      window[hookName] = function(l) {
+        origLangFn(l);
         setTimeout(() => { populateVoiceSelect(); updateLabels(); injectSpeakButtons(); }, 100);
         if (STATE.playing) stopNarrator();
       };
