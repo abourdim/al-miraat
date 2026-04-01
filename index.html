@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mirror — المرآة</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪞</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="genius.css">
+</head>
+<body>
+
+<!-- Splash Screen -->
+<div id="splash" class="splash">
+  <div class="splash-content">
+    <div class="splash-icon">🪞</div>
+    <h1 class="splash-title">المرآة</h1>
+    <p class="splash-subtitle">The Mirror — Le Miroir</p>
+    <p class="splash-book" data-i18n="splash_book">من كتاب "سر تأخر العرب والمسلمين"</p>
+    <p class="splash-author" data-i18n="splash_author">الشيخ محمد الغزالي رحمه الله</p>
+    <div class="splash-guide-items">
+      <div class="splash-guide-item" style="animation-delay: 0.3s">📜 <span data-i18n="tab_timeline">المسار</span></div>
+      <div class="splash-guide-item" style="animation-delay: 0.6s">🔍 <span data-i18n="tab_causes">الأسباب</span></div>
+      <div class="splash-guide-item" style="animation-delay: 0.9s">💡 <span data-i18n="tab_solutions">الحلول</span></div>
+      <div class="splash-guide-item" style="animation-delay: 1.2s">📝 <span data-i18n="tab_quiz">اختبار</span></div>
+    </div>
+    <div class="splash-loader">
+      <div class="splash-bar"></div>
+    </div>
+    <div class="splash-countdown" id="splashCountdown">3</div>
+  </div>
+</div>
+
+<!-- Sacred Bar -->
+<div class="deco-band top-band" aria-hidden="true"></div>
+  <div class="sacred-bar" id="sacredBar">
+  <span class="sacred-bismillah">بسم الله الرحمن الرحيم</span>
+  <span class="sacred-ayah">﴿ قَدْ خَلَتْ مِن قَبْلِكُمْ سُنَنٌ فَسِيرُوا فِي الْأَرْضِ فَانظُرُوا كَيْفَ كَانَ عَاقِبَةُ الْمُكَذِّبِينَ ﴾</span>
+</div>
+
+<!-- Top Bar -->
+<header class="top-bar" id="topBar">
+  <div class="top-bar-left">
+    <a href="https://workshop-diy.org" target="_blank" rel="noopener" class="workshop-badge" title="workshop-diy.org">
+      <svg class="workshop-logo-svg" width="32" height="32" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="3" fill="none"/>
+        <circle cx="50" cy="50" r="38" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <path d="M30 65 L40 35 L50 55 L60 35 L70 65" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="28" r="4" fill="currentColor" opacity="0.6"/>
+        <line x1="25" y1="72" x2="75" y2="72" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+        <text x="50" y="90" text-anchor="middle" font-size="11" font-weight="bold" fill="currentColor" font-family="sans-serif">DIY</text>
+      </svg>
+    </a>
+    <span class="app-title">🪞 <span data-i18n="app_title">المرآة</span></span>
+  </div>
+  <div class="top-bar-right">
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="ar" title="العربية" aria-label="Arabic">
+        <svg width="20" height="14" viewBox="0 0 30 20"><rect width="15" height="20" fill="#006233"/><rect x="15" width="15" height="20" fill="#fff"/><circle cx="16.5" cy="10" r="5" fill="#D21034"/><circle cx="18" cy="10" r="4" fill="#fff"/><circle cx="17" cy="10" r="4" fill="#006233"/><polygon points="17,6 18,9 21,9 18.5,11 19.5,14 17,12 14.5,14 15.5,11 13,9 16,9" fill="#D21034" transform="scale(0.6) translate(14,7)"/></svg>
+      </button>
+      <button class="lang-btn" data-lang="en" title="English" aria-label="English">
+        <svg width="24" height="16" viewBox="0 0 24 16" class="flag-svg">
+          <rect width="24" height="16" fill="#012169"/>
+          <path d="M0 0L24 16M24 0L0 16" stroke="#FFF" stroke-width="2.5"/>
+          <path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.5"/>
+          <path d="M12 0V16M0 8H24" stroke="#FFF" stroke-width="4"/>
+          <path d="M12 0V16M0 8H24" stroke="#C8102E" stroke-width="2.5"/>
+        </svg>
+      </button>
+      <button class="lang-btn" data-lang="fr" title="Francais" aria-label="French">
+        <svg width="24" height="16" viewBox="0 0 24 16" class="flag-svg">
+          <rect width="8" height="16" fill="#002395"/>
+          <rect x="8" width="8" height="16" fill="#FFFFFF"/>
+          <rect x="16" width="8" height="16" fill="#ED2939"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <button class="theme-btn active" data-theme="mirror" title="Mirror Theme">
+        <span class="theme-dot" style="background: linear-gradient(135deg, #C0C0C0, #1A237E)"></span>
+      </button>
+      <button class="theme-btn" data-theme="history" title="History Theme">
+        <span class="theme-dot" style="background: linear-gradient(135deg, #3E2723, #D7CCC8)"></span>
+      </button>
+      <button class="theme-btn" data-theme="hope" title="Hope Theme">
+        <span class="theme-dot" style="background: linear-gradient(135deg, #FF8F00, #FFF8E1)"></span>
+      </button>
+    </div>
+    <!-- Help & Sound -->
+    <button class="icon-btn" id="helpBtn" title="Help" aria-label="Help">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="currentColor" stroke-width="1.5"/><text x="11" y="15.5" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">?</text></svg>
+    </button>
+    <button class="icon-btn" id="soundToggle" title="Sound" aria-label="Toggle Sound">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" id="soundIcon">
+        <path d="M5 8h3l4-4v14l-4-4H5V8z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <path class="sound-wave" d="M15 7.5c1.3 1.3 1.3 5.7 0 7" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path class="sound-wave" d="M17.5 5c2.5 2.5 2.5 9.5 0 12" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Horizontal Timeline Scroll Bar -->
+<div class="timeline-scroll-bar" id="timelineScrollBar">
+  <div class="timeline-scroll-track">
+    <div class="timeline-scroll-line"></div>
+    <button class="timeline-dot era-golden" data-year="632" data-tab="timeline" data-event="0" title="632 CE">
+      <span class="dot-year">632</span>
+    </button>
+    <button class="timeline-dot era-golden" data-year="661" data-tab="timeline" data-event="1" title="661 CE">
+      <span class="dot-year">661</span>
+    </button>
+    <button class="timeline-dot era-golden" data-year="750" data-tab="timeline" data-event="2" title="750 CE">
+      <span class="dot-year">750</span>
+    </button>
+    <button class="timeline-dot era-golden" data-year="800" data-tab="timeline" data-event="3" title="~800 CE">
+      <span class="dot-year">800</span>
+    </button>
+    <button class="timeline-dot era-decline" data-year="1000" data-tab="timeline" data-event="4" title="1000+ CE">
+      <span class="dot-year">1000</span>
+    </button>
+    <button class="timeline-dot era-decline" data-year="1099" data-tab="timeline" data-event="5" title="1099 CE">
+      <span class="dot-year">1099</span>
+    </button>
+    <button class="timeline-dot era-decline" data-year="1258" data-tab="timeline" data-event="6" title="1258 CE">
+      <span class="dot-year">1258</span>
+    </button>
+    <button class="timeline-dot era-decline" data-year="1500" data-tab="timeline" data-event="7" title="1500+ CE">
+      <span class="dot-year">1500</span>
+    </button>
+    <button class="timeline-dot era-decline" data-year="1800" data-tab="timeline" data-event="8" title="1800+ CE">
+      <span class="dot-year">1800</span>
+    </button>
+    <button class="timeline-dot era-modern" data-year="1900" data-tab="timeline" data-event="9" title="1900+ CE">
+      <span class="dot-year">1900</span>
+    </button>
+    <button class="timeline-dot era-modern" data-year="1924" data-tab="timeline" data-event="10" title="1924 CE">
+      <span class="dot-year">1924</span>
+    </button>
+    <button class="timeline-dot era-modern" data-year="1948" data-tab="timeline" data-event="11" title="1948+ CE">
+      <span class="dot-year">1948</span>
+    </button>
+  </div>
+</div>
+
+<!-- Main Content Area -->
+<main class="main-content" id="mainContent">
+
+  <!-- ==================== HOME TAB ==================== -->
+  <section class="tab-panel" id="panel-home">
+    <div class="home-hero">
+      <div class="mirror-frame">
+        <div class="mirror-glass">
+          <div class="mirror-reflection"></div>
+          <div class="mirror-shimmer"></div>
+          <div class="mirror-text">🪞</div>
+        </div>
+      </div>
+      <h1 class="hero-title" data-i18n="home_title">المرآة</h1>
+      <p class="hero-subtitle" data-i18n="home_subtitle">انظر بصدق... أين أخطأنا؟</p>
+      <p class="hero-desc" data-i18n="home_desc">هذا الكتاب مرآة صادقة يضعها الشيخ محمد الغزالي أمام الأمة الإسلامية. ليس لجلد الذات، بل لفهم ما حدث حتى نستطيع النهوض من جديد.</p>
+      <div class="typewriter-container" id="typewriterContainer">
+        <span class="typewriter-text" id="typewriterText"></span><span class="typewriter-cursor" id="typewriterCursor"></span>
+      </div>
+    </div>
+
+    <!-- Cause & Effect Flowchart -->
+    <div class="flowchart-section">
+      <h2 class="section-title" data-i18n="flowchart_title">دورة التراجع</h2>
+      <p class="section-subtitle" data-i18n="flowchart_subtitle">كيف يغذي كل سبب الآخر في حلقة مفرغة</p>
+      <div class="flowchart" id="interactiveFlowchart">
+        <div class="flow-node flow-node-1 flow-clickable" data-flow-detail="flow_political_full">
+          <div class="flow-icon">👑</div>
+          <div class="flow-label" data-i18n="flow_political">فساد سياسي</div>
+          <div class="flow-detail" data-i18n="flow_political_detail">تحول الحكم من شورى إلى ملك وراثي</div>
+          <div class="flow-expanded-detail" data-i18n="flow_political_full">تحول نظام الحكم من الشورى والمحاسبة إلى ملك وراثي جعل السلطة مركزة في يد عائلات حاكمة. هذا الفساد السياسي أنتج ظلما اجتماعيا وقمعا للمعارضة وإفسادا للعلماء الذين إما سكتوا خوفا أو تحولوا إلى أدوات للسلطة.</div>
+        </div>
+        <div class="flow-arrow flow-arrow-animated">&#8595;</div>
+        <div class="flow-node flow-node-2 flow-clickable" data-flow-detail="flow_intellectual_full">
+          <div class="flow-icon">📚</div>
+          <div class="flow-label" data-i18n="flow_intellectual">جمود فكري</div>
+          <div class="flow-detail" data-i18n="flow_intellectual_detail">إغلاق باب الاجتهاد والتقليد الأعمى</div>
+          <div class="flow-expanded-detail" data-i18n="flow_intellectual_full">إغلاق باب الاجتهاد حوّل الفكر الإسلامي من حركة حية متجددة إلى تقليد جامد. العلماء صاروا يكررون أقوال السابقين دون تفكير نقدي. العلوم التجريبية والفلسفة أصبحت مشبوهة. الإبداع توقف بينما العالم يتغير.</div>
+        </div>
+        <div class="flow-arrow flow-arrow-animated">&#8595;</div>
+        <div class="flow-node flow-node-3 flow-clickable" data-flow-detail="flow_spiritual_full">
+          <div class="flow-icon">💔</div>
+          <div class="flow-label" data-i18n="flow_spiritual">فراغ روحي</div>
+          <div class="flow-detail" data-i18n="flow_spiritual_detail">انفصال العبادة عن الحياة اليومية</div>
+          <div class="flow-expanded-detail" data-i18n="flow_spiritual_full">انفصال العبادة عن الحياة اليومية جعل الدين مجرد طقوس شكلية. المسلم يصلي لكن لا يتقن عمله. يصوم لكن لا يعدل في تعامله. الروحانية الحقيقية التي تدفع للعمل والإتقان غابت وحلت محلها روحانية سلبية تنتظر المعجزات.</div>
+        </div>
+        <div class="flow-arrow flow-arrow-animated">&#8595;</div>
+        <div class="flow-node flow-node-4 flow-clickable" data-flow-detail="flow_cycle_full">
+          <div class="flow-icon">🔄</div>
+          <div class="flow-label" data-i18n="flow_cycle">تكرار الحلقة</div>
+          <div class="flow-detail" data-i18n="flow_cycle_detail">الفراغ الروحي يعيد إنتاج الفساد السياسي</div>
+          <div class="flow-expanded-detail" data-i18n="flow_cycle_full">الفراغ الروحي يجعل الناس تقبل الظلم وتستسلم للواقع. هذا القبول يشجع الفاسدين على مزيد من الفساد. والفساد بدوره يزيد الجمود الفكري والفراغ الروحي. وهكذا تستمر الحلقة المفرغة جيلا بعد جيل.</div>
+        </div>
+        <div class="flow-arrow flow-arrow-back">&#8593; <span data-i18n="flow_back">العودة للبداية</span></div>
+      </div>
+    </div>
+
+    <!-- Book Quick Stats -->
+    <div class="quick-stats">
+      <div class="stat-card scroll-reveal">
+        <div class="stat-number">١٣٣</div>
+        <div class="stat-label" data-i18n="stat_pages">صفحة</div>
+      </div>
+      <div class="stat-card scroll-reveal">
+        <div class="stat-number">٨</div>
+        <div class="stat-label" data-i18n="stat_causes">أسباب رئيسية</div>
+      </div>
+      <div class="stat-card scroll-reveal">
+        <div class="stat-number">١٣٠٠+</div>
+        <div class="stat-label" data-i18n="stat_years">سنة من التاريخ</div>
+      </div>
+    </div>
+
+    <!-- Compare Eras Feature -->
+    <div class="compare-eras-section scroll-reveal">
+      <h2 class="section-title" data-i18n="compare_title">مقارنة العصور</h2>
+      <p class="section-subtitle" data-i18n="compare_subtitle">الخلافة الراشدة مقابل الحكم المعاصر</p>
+      <div class="compare-grid">
+        <div class="compare-card compare-rashidun">
+          <div class="compare-header era-golden-bg">
+            <span class="compare-era-icon">🌟</span>
+            <h3 data-i18n="compare_rashidun">الخلافة الراشدة</h3>
+          </div>
+          <ul class="compare-list">
+            <li data-i18n="compare_r1">الحاكم يُختار بالشورى ويُحاسب</li>
+            <li data-i18n="compare_r2">بيت المال للجميع — الحاكم لا يأخذ أكثر من حاجته</li>
+            <li data-i18n="compare_r3">حرية النقد — "لو أخطأت فقوموني"</li>
+            <li data-i18n="compare_r4">العلماء مستقلون عن السلطة</li>
+            <li data-i18n="compare_r5">المساواة بين الأعراق والطبقات</li>
+          </ul>
+        </div>
+        <div class="compare-vs">VS</div>
+        <div class="compare-card compare-modern">
+          <div class="compare-header era-modern-bg">
+            <span class="compare-era-icon">🏛️</span>
+            <h3 data-i18n="compare_modern">الحكم المعاصر</h3>
+          </div>
+          <ul class="compare-list">
+            <li data-i18n="compare_m1">السلطة تُورَّث أو تُفرض بالقوة</li>
+            <li data-i18n="compare_m2">ثروات الأمة تُنهب من القلة الحاكمة</li>
+            <li data-i18n="compare_m3">قمع المعارضة والرأي الآخر</li>
+            <li data-i18n="compare_m4">العلماء تابعون للسلطة أو مهمشون</li>
+            <li data-i18n="compare_m5">تمييز عرقي وطبقي واسع الانتشار</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TIMELINE TAB ==================== -->
+  <section class="tab-panel" id="panel-timeline">
+    <h1 class="page-title" data-i18n="timeline_title">المسار — خط زمني للتراجع</h1>
+    <p class="page-subtitle" data-i18n="timeline_subtitle">رحلة عبر التاريخ: كيف وصلنا إلى هنا؟</p>
+
+    <div class="timeline">
+      <!-- Event 1 -->
+      <div class="timeline-event scroll-reveal era-golden-border" data-year="632">
+        <div class="timeline-marker era-golden-marker"></div>
+        <div class="timeline-card expandable-card" data-sound="click">
+          <div class="timeline-date era-golden-text">632 <span data-i18n="ce">م</span></div>
+          <h3 class="timeline-event-title" data-i18n="tl_1_title">وفاة النبي ﷺ — بداية الخلافة الراشدة</h3>
+          <div class="expandable-content">
+            <p data-i18n="tl_1_detail">بعد وفاة النبي محمد ﷺ، تولى أبو بكر الصديق رضي الله عنه الخلافة. استمرت الخلافة الراشدة حوالي ثلاثين سنة، حكم فيها أربعة خلفاء بالشورى والعدل. كانت هذه الفترة هي النموذج المثالي للحكم الإسلامي الذي يقارن به الغزالي كل ما جاء بعده.</p>
+            <p data-i18n="tl_1_detail2">الخلفاء الراشدون: أبو بكر الصديق، عمر بن الخطاب، عثمان بن عفان، علي بن أبي طالب — رضي الله عنهم أجمعين.</p>
+          </div>
+          <div class="card-actions">
+            <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+            <button class="share-btn" data-share="tl_1" title="Share">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="timeline-event scroll-reveal era-golden-border" data-year="661">
+        <div class="timeline-marker marker-warning era-golden-marker"></div>
+        <div class="timeline-card expandable-card" data-sound="click">
+          <div class="timeline-date era-golden-text">661 <span data-i18n="ce">م</span></div>
+          <h3 class="timeline-event-title" data-i18n="tl_2_title">التحول للملك الأموي الوراثي — الشرخ الأول</h3>
+          <div class="expandable-content">
+            <p data-i18n="tl_2_detail">هنا يضع الغزالي إصبعه على الجرح الأول: تحول الحكم من الشورى إلى الملك الوراثي. معاوية رضي الله عنه عيّن ابنه يزيد خليفة من بعده، وهذا كان انحرافا عن نموذج الخلافة الراشدة.</p>
+            <p data-i18n="tl_2_detail2">لم يكن الأمر مجرد تغيير في شكل الحكم — بل كان تغييرا في الفلسفة كلها. بدلا من اختيار الأصلح، صار الحكم يُورَّث كأنه ملكية خاصة. وهذا الشرخ الأول فتح الباب لكل ما تلاه.</p>
+          </div>
+          <div class="card-actions">
+            <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+            <button class="share-btn" data-share="tl_2" title="Share">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 3: Abbasid -->
+      <div class="timeline-event scroll-reveal era-golden-border" data-year="750">
+        <div class="timeline-marker era-golden-marker"></div>
+        <div class="timeline-card expandable-card" data-sound="click">
+          <div class="timeline-date era-golden-text">750 <span data-i18n="ce">م</span></div>
+          <h3 class="timeline-event-title" data-i18n="tl_3_title">العصر العباسي — ثروة لكن فساد متزايد</h3>
+          <div class="expandable-content">
+            <p data-i18n="tl_3_detail">العباسيون أسقطوا الأمويين ووعدوا بالعودة لحكم أهل البيت. لكن ما حدث كان مختلفا: ازدهار علمي وثقافي هائل، لكن في الوقت نفسه نمو الترف والبذخ في بلاط الحكم.</p>
+            <p data-i18n="tl_3_detail2">يشير الغزالي إلى أن العلم ازدهر رغم الحكام وليس بسببهم. المسلمون الأوائل ترجموا وأبدعوا، لكن البلاط كان يزداد فسادا. الفجوة بين العلماء والحكام اتسعت، والعلماء إما سكتوا أو سُجنوا.</p>
+          </div>
+          <div class="card-actions">
+            <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+            <button class="share-btn" data-share="tl_3" title="Share">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 4: NEW - Translation Movement -->
+      <div class="timeline-event scroll-reveal era-golden-border" data-year="800">
+        <div class="timeline-marker era-golden-marker"></div>
+        <div class="timeline-card expandable-card" data-sound="click">
+          <div class="timeline-date era-golden-text">~800 <span data-i18n="ce">م</span></div>
+          <h3 class="timeline-event-title" data-i18n="tl_trans_title">حركة الترجمة — قيادة المعرفة العالمية</h3>
+          <div class="expandable-content">
+            <p data-i18n="tl_trans_detail">في بيت الحكمة ببغداد، قاد المسلمون أعظم حركة ترجمة في التاريخ. نقلوا علوم اليونان والهند والفرس إلى العربية، ثم أضافوا إليها وطوروها. الخوارزمي في الرياضيات، ابن سينا في الطب، ابن الهيثم في البصريات — كلهم أبناء هذه الحركة.</p>
+            <p data-i18n="tl_trans_detail2">هذا يثبت أن الإسلام الحقيقي يشجع العلم والانفتاح على الحضارات الأخرى. المسلمون لم يخجلوا من أخذ علوم اليونان — بل ترجموها وطوروها ونقلوها للعالم. هذه الروح هي التي يريد الغزالي إحياءها.</p>
+          </div>
+          <div class="card-actions">
+            <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+            <button class="share-btn" data-share="tl_trans" title="Share">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 5: Closing ijtihad -->
+      <div class="timeline-event scroll-reveal era-decline-border" data-year="1000">
+        <div class="timeline-marker marker-danger era-decline-marker"></div>
+        <div class="timeline-card expandable-card" data-sound="click">
+          <div class="timeline-date era-decline-text">1000+ <span data-i18n="ce">م</span></div>
+          <h3 class="timeline-event-title" data-i18n="tl_4_title">إغلاق باب الاجتهاد — بداية الجمود الفكري</h3>
+          <div class="expandable-content">
+            <p data-i18n="tl_4_detail">من أخطر المنعطفات في تاريخ الأمة: قرر بعض العلماء أن "باب الاجتهاد أُغلق". هذا يعني أنه لم يعد مسموحا بالتفكير المستقل في فهم النصوص الدينية. كل شيء يجب أن يكون تقليدا لمن سبق.</p>
+            <p data-i18n="tl_4_detail2">الغزالي يرى هذا كارثة حقيقية: الإسلام جاء ليحرر العقل، فصار المسلمون يقيدونه باسم الإسلام. العلوم الطبيعية والفلسفة صارت مشبوهة. الإبداع صار بدعة. والنتيجة: تخلف فكري بينما أوروبا بدأت نهضتها.</p>
+          </div>
+          <div class="card-actions">
+            <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+            <button class="share-btn" data-share="tl_4" title="Share">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 6: NEW - Crusades -->
+      <div class="timeline-event scroll-reveal era-decline-border" data-year="1099">
+        <div class="timeline-marker marker-danger era-decline-marker"></div>
+        <div class="timeline-card expandable-card" data-sound="click">
+          <div class="timeline-date era-decline-text">1099 <span data-i18n="ce">م</span></div>
+          <h3 class="timeline-event-title" data-i18n="tl_crusade_title">بداية الحروب الصليبية — ضغط خارجي على حضارة ضعيفة</h3>
+          <div class="expandable-content">
+            <p data-i18n="tl_crusade_detail">استولى الصليبيون على القدس وأسسوا ممالك في قلب العالم الإسلامي. هذا الغزو لم يكن ليحدث لو كانت الأمة متحدة وقوية. الدويلات الإسلامية المتناحرة لم تستطع التنسيق حتى لحماية أقدس مدنها.</p>
+            <p data-i18n="tl_crusade_detail2">احتاج المسلمون لعقود حتى استردوا القدس على يد صلاح الدين. الدرس: عندما تتحد الأمة تنتصر، وعندما تتفرق تُهزم. نور الدين ثم صلاح الدين نجحا لأنهما وحّدا المسلمين أولا قبل مواجهة العدو.</p>
+          </div>
+          <div class="card-actions">
+            <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+            <button class="share-btn" data-share="tl_crusade" title="Share">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 7: Fall of Baghdad -->
+      <div class="timeline-event scroll-reveal era-decline-border" data-year="1258">
+        <div class="timeline-marker marker-danger era-decline-marker"></div>
+        <div class="timeline-card expandable-card" data-sound="click">
+          <div class="timeline-date era-decline-text">1258 <span data-i18n="ce">م</span></div>
+          <h3 class="timeline-event-title" data-i18n="tl_5_title">سقوط بغداد — الغزو الخارجي بسبب التعفن الداخلي</h3>
+          <div class="expandable-content">
+            <p data-i18n="tl_5_detail">المغول دمروا بغداد وأحرقوا مكتباتها الشهيرة. لكن الغزالي يؤكد أن المغول لم يكونوا السبب — بل كانوا النتيجة. الأمة كانت متفككة من الداخل: صراعات طائفية، خيانات، وضعف عسكري.</p>
+            <p data-i18n="tl_5_detail2">الدرس الذي يريد الغزالي إيصاله: العدو الخارجي لا ينجح إلا عندما يكون الداخل ضعيفا. لو كانت الأمة متحدة وقوية، لما استطاع المغول أن يفعلوا ما فعلوا.</p>
+          </div>
+          <div class="card-actions">
+            <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+            <button class="share-btn" data-share="tl_5" title="Share">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 8: Ottoman -->
+      <div class="timeline-event scroll-reveal era-decline-border" data-year="1500">
+        <div class="timeline-marker era-decline-marker"></div>
+        <div class="timeline-card expandable-card" data-sound="click">
+          <div class="timeline-date era-decline-text">1500+ <span data-i18n="ce">م</span></div>
+          <h3 class="timeline-event-title" data-i18n="tl_6_title">المركزية العثمانية — جمود في أنحاء الإمبراطورية</h3>
+          <div class="expandable-content">
+            <p data-i18n="tl_6_detail">الدولة العثمانية وحّدت العالم الإسلامي سياسيا، لكنها فرضت نظاما مركزيا صارما. القرارات كلها تُتخذ في إسطنبول. المبادرة المحلية ماتت. الإبداع توقف.</p>
+            <p data-i18n="tl_6_detail2">يرى الغزالي أن العثمانيين حافظوا على شكل الخلافة دون روحها. الحكم العسكري حل محل الشورى. والتعليم الديني صار تلقينا بدون تفكير. كل هذا أضعف الأمة أمام التحديات القادمة.</p>
+          </div>
+          <div class="card-actions">
+            <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+            <button class="share-btn" data-share="tl_6" title="Share">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 9: Colonialism -->
+      <div class="timeline-event scroll-reveal era-decline-border" data-year="1800">
+        <div class="timeline-marker marker-danger era-decline-marker"></div>
+        <div class="timeline-card expandable-card" data-sound="click">
+          <div class="timeline-date era-decline-text">1800+ <span data-i18n="ce">م</span></div>
+          <h3 class="timeline-event-title" data-i18n="tl_7_title">عصر الاستعمار — استغلال الضعف الداخلي</h3>
+          <div class="expandable-content">
+            <p data-i18n="tl_7_detail">جاء الاستعمار الأوروبي ووجد أمة ضعيفة متفككة. فرنسا في الجزائر، بريطانيا في مصر والهند، إيطاليا في ليبيا. لم يكن الاستعمار هو سبب التخلف — بل كان التخلف هو الذي مكّن الاستعمار.</p>
+            <p data-i18n="tl_7_detail2">الغزالي لا يبرئ المستعمرين — فهم ارتكبوا جرائم فظيعة. لكنه يرفض أن نلوم الآخرين فقط. علينا أن نسأل: لماذا كنا ضعفاء بما يكفي لنُستعمَر؟</p>
+          </div>
+          <div class="card-actions">
+            <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+            <button class="share-btn" data-share="tl_7" title="Share">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 10: Independence -->
+      <div class="timeline-event scroll-reveal era-modern-border" data-year="1900">
+        <div class="timeline-marker era-modern-marker"></div>
+        <div class="timeline-card expandable-card" data-sound="click">
+          <div class="timeline-date era-modern-text">1900+ <span data-i18n="ce">م</span></div>
+          <h3 class="timeline-event-title" data-i18n="tl_8_title">الاستقلال لكن استمرار التراجع — أزمة هوية</h3>
+          <div class="expandable-content">
+            <p data-i18n="tl_8_detail">حصلت الدول الإسلامية على استقلالها، لكن التراجع استمر. لماذا؟ لأن الاستقلال كان سياسيا فقط. الفكر والاقتصاد والتعليم بقيت تابعة. بعض الحكام الجدد كانوا أسوأ من المستعمرين.</p>
+            <p data-i18n="tl_8_detail2">يرى الغزالي أن الأمة تعاني أزمة هوية حقيقية: بين من يريد العودة لماضٍ مثالي لم يوجد أصلا، ومن يريد تقليد الغرب بالكامل. والحل في رأيه لا هذا ولا ذاك، بل في فهم الإسلام الصحيح وتطبيقه بذكاء.</p>
+          </div>
+          <div class="card-actions">
+            <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+            <button class="share-btn" data-share="tl_8" title="Share">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 11: NEW - Abolition of Caliphate -->
+      <div class="timeline-event scroll-reveal era-modern-border" data-year="1924">
+        <div class="timeline-marker marker-danger era-modern-marker"></div>
+        <div class="timeline-card expandable-card" data-sound="click">
+          <div class="timeline-date era-modern-text">1924 <span data-i18n="ce">م</span></div>
+          <h3 class="timeline-event-title" data-i18n="tl_caliphate_title">إلغاء الخلافة العثمانية — نهاية الحكم الموحد</h3>
+          <div class="expandable-content">
+            <p data-i18n="tl_caliphate_detail">ألغى مصطفى كمال أتاتورك الخلافة العثمانية رسميا عام 1924. لأول مرة منذ وفاة النبي ﷺ، لم يعد للمسلمين رمز سياسي موحد. تفتت العالم الإسلامي إلى دول قومية صغيرة رسم حدودها المستعمرون.</p>
+            <p data-i18n="tl_caliphate_detail2">رغم أن الخلافة العثمانية كانت ضعيفة في سنواتها الأخيرة، إلا أن إلغاءها أزال آخر رابط سياسي بين المسلمين. كل دولة أصبحت تنظر لمصالحها الضيقة بدلا من مصلحة الأمة. هذا التفتت ما زال مستمرا حتى اليوم.</p>
+          </div>
+          <div class="card-actions">
+            <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+            <button class="share-btn" data-share="tl_caliphate" title="Share">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 12: NEW - Palestine and modern crises -->
+      <div class="timeline-event scroll-reveal era-modern-border" data-year="1948">
+        <div class="timeline-marker marker-danger era-modern-marker"></div>
+        <div class="timeline-card expandable-card" data-sound="click">
+          <div class="timeline-date era-modern-text">1948+ <span data-i18n="ce">م</span></div>
+          <h3 class="timeline-event-title" data-i18n="tl_palestine_title">فلسطين والأزمات المعاصرة — عواقب مستمرة</h3>
+          <div class="expandable-content">
+            <p data-i18n="tl_palestine_detail">نكبة فلسطين عام 1948 كانت أوضح دليل على عجز الأمة المتفككة. دول عربية متعددة دخلت الحرب لكنها فشلت بسبب التنسيق السيء والخلافات الداخلية والفساد العسكري. شُرّد شعب بأكمله والأمة عاجزة.</p>
+            <p data-i18n="tl_palestine_detail2">ما زالت فلسطين حتى اليوم مرآة صادقة لحال الأمة: تفرق سياسي، عجز عسكري، تبعية اقتصادية، وخلافات داخلية تمنع أي موقف موحد. كل الأسباب التي حللها الغزالي في كتابه تتجلى في هذه القضية المستمرة.</p>
+          </div>
+          <div class="card-actions">
+            <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+            <button class="share-btn" data-share="tl_palestine" title="Share">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CAUSES TAB ==================== -->
+  <section class="tab-panel" id="panel-causes">
+    <h1 class="page-title" data-i18n="causes_title">الأسباب — لماذا تراجعنا؟</h1>
+    <p class="page-subtitle" data-i18n="causes_subtitle">ثمانية أسباب رئيسية حددها الشيخ الغزالي</p>
+
+    <div class="causes-grid">
+      <!-- Cause 1 -->
+      <div class="cause-card expandable-card scroll-reveal" data-sound="click">
+        <div class="cause-icon">👑</div>
+        <div class="cause-number">١</div>
+        <h3 class="cause-title" data-i18n="cause_1_title">الفساد السياسي: من الشورى إلى الملك الوراثي</h3>
+        <div class="expandable-content">
+          <p data-i18n="cause_1_detail">الإسلام جاء بمبدأ الشورى: الحاكم يُختار ويُحاسب. لكن بعد الخلافة الراشدة، تحول الحكم إلى ملك وراثي. الابن يرث أباه سواء كان صالحا أم لا. هذا أدى إلى حكام ظالمين لا يجرؤ أحد على محاسبتهم.</p>
+          <p data-i18n="cause_1_detail2">يقول الغزالي: عندما يكون الحاكم فوق المحاسبة، يفسد كل شيء. العدل يختفي، والثروة تتركز، والناس تفقد الأمل في الإصلاح.</p>
+        </div>
+        <div class="card-actions">
+          <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+          <button class="share-btn" data-share="cause_1" title="Share">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cause 2 -->
+      <div class="cause-card expandable-card scroll-reveal" data-sound="click">
+        <div class="cause-icon">⚔️</div>
+        <div class="cause-number">٢</div>
+        <h3 class="cause-title" data-i18n="cause_2_title">عودة العصبية القبلية والتعصب العرقي</h3>
+        <div class="expandable-content">
+          <p data-i18n="cause_2_detail">الإسلام ألغى الفوارق العرقية: لا فضل لعربي على عجمي إلا بالتقوى. لكن العصبية القبلية عادت بقوة. العرب تعالوا على غير العرب. القبائل تقاتلت فيما بينها. والنتيجة: أمة ممزقة بدلا من أمة موحدة.</p>
+          <p data-i18n="cause_2_detail2">هذا التعصب لم يمت حتى اليوم. ما زلنا نرى التمييز على أساس العرق والجنسية واللون. وهذا مخالف صريح لتعاليم الإسلام الذي ساوى بين بلال الحبشي وسلمان الفارسي وصهيب الرومي مع العرب.</p>
+        </div>
+        <div class="card-actions">
+          <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+          <button class="share-btn" data-share="cause_2" title="Share">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cause 3 -->
+      <div class="cause-card expandable-card scroll-reveal" data-sound="click">
+        <div class="cause-icon">🔥</div>
+        <div class="cause-number">٣</div>
+        <h3 class="cause-title" data-i18n="cause_3_title">التعصب المذهبي في المسائل الفرعية</h3>
+        <div class="expandable-content">
+          <p data-i18n="cause_3_detail">بدلا من التركيز على أصول الإسلام الكبرى — العدل والرحمة والعلم — انشغل المسلمون بالخلافات الفرعية. هل نرفع اليدين في الصلاة أم لا؟ أين نضع اليدين؟ هذه خلافات صغيرة تحولت إلى حروب بين المذاهب.</p>
+          <p data-i18n="cause_3_detail2">الغزالي يسخر من هذا الانشغال: الأمة تغرق وأنتم تتجادلون في تفاصيل لا تقدم ولا تؤخر. الاختلاف في الفروع أمر طبيعي ورحمة. لكن تحويله إلى عداء وتكفير هو المصيبة.</p>
+        </div>
+        <div class="card-actions">
+          <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+          <button class="share-btn" data-share="cause_3" title="Share">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cause 4 -->
+      <div class="cause-card expandable-card scroll-reveal" data-sound="click">
+        <div class="cause-icon">📚</div>
+        <div class="cause-number">٤</div>
+        <h3 class="cause-title" data-i18n="cause_4_title">تزييف العلم: السلفية الجامدة تضيّق الإسلام</h3>
+        <div class="expandable-content">
+          <p data-i18n="cause_4_detail">يميز الغزالي بين السلفية الحقيقية (العودة لروح الإسلام الأول) والسلفية المغشوشة (التمسك بالشكل دون المضمون). البعض حوّل الإسلام من دين يحرر العقل إلى قائمة ممنوعات لا تنتهي.</p>
+          <p data-i18n="cause_4_detail2">المعرفة صارت مغشوشة: أحاديث ضعيفة أو موضوعة تُستخدم لتبرير الجمود. فتاوى متشددة تُصدر بلا فهم للواقع. والعلوم الطبيعية تُهمل لأنها "علوم دنيوية" — مع أن القرآن يأمرنا بالتفكر في الكون.</p>
+        </div>
+        <div class="card-actions">
+          <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+          <button class="share-btn" data-share="cause_4" title="Share">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cause 5 -->
+      <div class="cause-card expandable-card scroll-reveal" data-sound="click">
+        <div class="cause-icon">⚖️</div>
+        <div class="cause-number">٥</div>
+        <h3 class="cause-title" data-i18n="cause_5_title">الجهل بسنن الله في الحضارات</h3>
+        <div class="expandable-content">
+          <p data-i18n="cause_5_detail">لله سنن (قوانين) تحكم صعود الحضارات وسقوطها. من يعمل ويتعلم ويعدل ينجح — سواء كان مسلما أو غير مسلم. من يكسل ويظلم ويجهل يتخلف — حتى لو كان مسلما. هذا قانون إلهي لا يحابي أحدا.</p>
+          <p data-i18n="cause_5_detail2">كثير من المسلمين ظنوا أن الله سينصرهم تلقائيا لأنهم مسلمون. لكن الغزالي يقول: الله ينصر من يأخذ بالأسباب. أوروبا تقدمت لأنها عملت بسنن الله في العلم والعمل — حتى لو لم تؤمن بالله. ونحن تخلفنا لأننا تركنا الأسباب وتعلقنا بالأماني.</p>
+        </div>
+        <div class="card-actions">
+          <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+          <button class="share-btn" data-share="cause_5" title="Share">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cause 6 -->
+      <div class="cause-card expandable-card scroll-reveal" data-sound="click">
+        <div class="cause-icon">🕸️</div>
+        <div class="cause-number">٦</div>
+        <h3 class="cause-title" data-i18n="cause_6_title">المؤامرات الخارجية تستغل الضعف الداخلي</h3>
+        <div class="expandable-content">
+          <p data-i18n="cause_6_detail">نعم، هناك مؤامرات خارجية حقيقية ضد الأمة الإسلامية — الاستعمار والتبشير والتغريب. لكن الغزالي يقول: هذه المؤامرات لا تنجح إلا لأننا ضعفاء من الداخل.</p>
+          <p data-i18n="cause_6_detail2">الطبيب الحكيم لا يلوم الجراثيم فقط — بل يسأل: لماذا المناعة ضعيفة؟ بدلا من نظريات المؤامرة التي تُعفينا من المسؤولية، علينا أن نبني قوتنا الداخلية. عندما نكون أقوياء، لن تستطيع أي مؤامرة أن تؤثر فينا.</p>
+        </div>
+        <div class="card-actions">
+          <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+          <button class="share-btn" data-share="cause_6" title="Share">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cause 7: NEW - Women's Education -->
+      <div class="cause-card expandable-card scroll-reveal" data-sound="click">
+        <div class="cause-icon">🎓</div>
+        <div class="cause-number">٧</div>
+        <h3 class="cause-title" data-i18n="cause_7_title">التخلي عن تعليم المرأة — خسارة حضارية</h3>
+        <div class="expandable-content">
+          <p data-i18n="cause_7_detail">في صدر الإسلام، كانت المرأة عالمة ومعلمة وطبيبة وتاجرة. عائشة رضي الله عنها كانت مرجعا في الفقه والحديث يأتيها كبار الصحابة للعلم. لكن مع مرور الوقت، تراجع تعليم المرأة حتى صار البعض يحرّمه.</p>
+          <p data-i18n="cause_7_detail2">حرمان نصف المجتمع من التعليم والمشاركة الفعالة يعني خسارة نصف الطاقة الحضارية للأمة. الأمم التي تقدمت هي التي استثمرت في تعليم الجنسين. تهميش المرأة ليس من الإسلام — بل هو من أسباب تأخر المسلمين.</p>
+        </div>
+        <div class="card-actions">
+          <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+          <button class="share-btn" data-share="cause_7" title="Share">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cause 8: NEW - Economic Systems -->
+      <div class="cause-card expandable-card scroll-reveal" data-sound="click">
+        <div class="cause-icon">💰</div>
+        <div class="cause-number">٨</div>
+        <h3 class="cause-title" data-i18n="cause_8_title">الفشل في بناء أنظمة اقتصادية ذاتية</h3>
+        <div class="expandable-content">
+          <p data-i18n="cause_8_detail">الإسلام جاء بنظام اقتصادي متكامل: الزكاة والوقف ومنع الربا وتشجيع التجارة العادلة. لكن المسلمين تخلوا عن تطوير هذا النظام وأصبحوا تابعين اقتصاديا للغرب. معظم الدول الإسلامية تستورد أكثر مما تصدر وتعتمد على المعونات.</p>
+          <p data-i18n="cause_8_detail2">الاستقلال الاقتصادي أساس الاستقلال السياسي. من يتحكم في اقتصادك يتحكم في قرارك. المسلمون لديهم موارد هائلة لكنهم فشلوا في تطوير أنظمة اقتصادية تحقق الاكتفاء الذاتي وتحمي ثرواتهم من النهب.</p>
+        </div>
+        <div class="card-actions">
+          <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+          <button class="share-btn" data-share="cause_8" title="Share">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SOLUTIONS TAB ==================== -->
+  <section class="tab-panel" id="panel-solutions">
+    <h1 class="page-title" data-i18n="solutions_title">الحلول — طريق النهضة</h1>
+    <p class="page-subtitle" data-i18n="solutions_subtitle">الغزالي لم يكتفِ بالتشخيص — بل قدم الدواء أيضا</p>
+
+    <div class="solutions-list">
+      <!-- Solution 1 -->
+      <div class="solution-card expandable-card scroll-reveal" data-sound="click">
+        <div class="solution-number">💡 ١</div>
+        <h3 class="solution-title" data-i18n="sol_1_title">الوحدة التي تتجاوز المذهب والعرق والجنسية</h3>
+        <div class="expandable-content">
+          <p data-i18n="sol_1_detail">الأمة الإسلامية واحدة بغض النظر عن المذهب الفقهي أو العرق أو الجنسية. سني وشيعي، عربي وتركي وإندونيسي — كلهم مسلمون. الاختلاف في الفروع لا يجب أن يمزق الأمة.</p>
+          <p data-i18n="sol_1_detail2">الغزالي يدعو لوحدة على أساس المشترك الكبير: الشهادتان، الصلاة، الزكاة، الأخلاق. وترك الخلافات الصغيرة لكل مجتمع يتعامل معها حسب ظروفه.</p>
+        </div>
+        <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+      </div>
+
+      <!-- Solution 2 -->
+      <div class="solution-card expandable-card scroll-reveal" data-sound="click">
+        <div class="solution-number">💡 ٢</div>
+        <h3 class="solution-title" data-i18n="sol_2_title">إحياء الحكم الإسلامي الأصيل</h3>
+        <div class="expandable-content">
+          <p data-i18n="sol_2_detail">ليس المقصود العودة للقرن السابع حرفيا. بل المقصود هو تطبيق مبادئ الحكم الإسلامي: الشورى (الديمقراطية)، المحاسبة، العدل، حرية التعبير. هذه مبادئ صالحة لكل زمان ومكان.</p>
+          <p data-i18n="sol_2_detail2">عمر بن الخطاب رضي الله عنه كان يقول: "لو عثرت بغلة في العراق لخشيت أن يسألني الله عنها". هذا مستوى المسؤولية المطلوب — لا حاكم فوق المحاسبة.</p>
+        </div>
+        <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+      </div>
+
+      <!-- Solution 3 -->
+      <div class="solution-card expandable-card scroll-reveal" data-sound="click">
+        <div class="solution-number">💡 ٣</div>
+        <h3 class="solution-title" data-i18n="sol_3_title">دمج العلم الديني مع العلم الدنيوي</h3>
+        <div class="expandable-content">
+          <p data-i18n="sol_3_detail">لا يوجد في الإسلام فصل بين الدين والعلم. الإسلام يأمر بطلب العلم بكل أنواعه: الطب والهندسة والفيزياء والكيمياء والفلك. المسلمون الأوائل كانوا علماء دين وعلماء طبيعة في الوقت نفسه.</p>
+          <p data-i18n="sol_3_detail2">الغزالي يدعو لإصلاح التعليم: الأزهر يجب أن يدرّس الفيزياء مع الفقه. والجامعات المدنية يجب أن تحترم القيم الأخلاقية. العلم بدون أخلاق خطير، والأخلاق بدون علم عاجزة.</p>
+        </div>
+        <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+      </div>
+
+      <!-- Solution 4 -->
+      <div class="solution-card expandable-card scroll-reveal" data-sound="click">
+        <div class="solution-number">💡 ٤</div>
+        <h3 class="solution-title" data-i18n="sol_4_title">نقد الذات قبل لوم الأعداء</h3>
+        <div class="expandable-content">
+          <p data-i18n="sol_4_detail">الغزالي يقول: كفى لوما للآخرين. نعم، الاستعمار ظلمنا. نعم، هناك مؤامرات. لكن لن نتقدم أبدا إذا بقينا نلوم الآخرين ونرفض أن ننظر في المرآة. الخطوة الأولى للعلاج هي الاعتراف بالمرض.</p>
+          <p data-i18n="sol_4_detail2">هذا هو معنى اسم الكتاب: "سر تأخر العرب والمسلمين" — السر ليس سرا حقيقيا. الأسباب واضحة لكل من يريد أن يرى. المشكلة أننا نرفض النظر في المرآة. هذا الكتاب هو تلك المرآة.</p>
+        </div>
+        <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+      </div>
+
+      <!-- Solution 5: NEW - Women's Empowerment -->
+      <div class="solution-card expandable-card scroll-reveal" data-sound="click">
+        <div class="solution-number">💡 ٥</div>
+        <h3 class="solution-title" data-i18n="sol_5_title">تمكين المرأة ضرورة حضارية</h3>
+        <div class="expandable-content">
+          <p data-i18n="sol_5_detail">تمكين المرأة ليس ترفا غربيا بل ضرورة إسلامية. النبي ﷺ قال "طلب العلم فريضة على كل مسلم" — والفريضة تشمل الرجال والنساء. خديجة كانت أنجح تاجرة في مكة، وعائشة كانت من أعلم الناس بالحديث والفقه.</p>
+          <p data-i18n="sol_5_detail2">أمة تهمل تعليم نصف أبنائها وتمنعهم من المشاركة الفعالة هي أمة تسير بنصف طاقتها. تعليم المرأة وتمكينها في العمل والمجتمع مع الحفاظ على القيم الإسلامية هو مفتاح للنهضة الحقيقية.</p>
+        </div>
+        <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+      </div>
+
+      <!-- Solution 6: NEW - Economic Independence -->
+      <div class="solution-card expandable-card scroll-reveal" data-sound="click">
+        <div class="solution-number">💡 ٦</div>
+        <h3 class="solution-title" data-i18n="sol_6_title">الاستقلال الاقتصادي عبر مبادئ التمويل الإسلامي</h3>
+        <div class="expandable-content">
+          <p data-i18n="sol_6_detail">الإسلام يقدم نظاما اقتصاديا بديلا يقوم على العدالة: منع الربا، تشجيع المشاركة في الربح والخسارة، الزكاة كضمان اجتماعي، والوقف كاستثمار مستدام. هذه الأدوات يمكن أن تبني اقتصادا قويا مستقلا.</p>
+          <p data-i18n="sol_6_detail2">المصرفية الإسلامية والاستثمار الأخلاقي ينموان عالميا. على المسلمين تطوير هذه الأنظمة لتحقيق الاكتفاء الذاتي. الاستقلال الاقتصادي يمنح القوة السياسية والقدرة على اتخاذ قرارات سيادية حرة.</p>
+        </div>
+        <button class="expand-btn" data-i18n="read_more">اقرأ المزيد</button>
+      </div>
+    </div>
+
+    <!-- Inspirational Quote Box -->
+    <div class="quote-box scroll-reveal">
+      <div class="quote-icon">💬</div>
+      <blockquote data-i18n="ghazali_quote">المسلمون لن ينصرهم الله لمجرد أنهم يحملون بطاقة هوية إسلامية. النصر يأتي لمن يأخذ بأسبابه — علما وعملا وعدلا وإتقانا.</blockquote>
+      <cite data-i18n="ghazali_cite">— معنى كلام الشيخ محمد الغزالي، رحمه الله</cite>
+    </div>
+  </section>
+
+  <!-- ==================== LESSONS TAB ==================== -->
+  <section class="tab-panel" id="panel-lessons">
+    <h1 class="page-title" data-i18n="lessons_title">دروس اليوم — التاريخ يعيد نفسه</h1>
+    <p class="page-subtitle" data-i18n="lessons_subtitle">كيف تتجلى أسباب التراجع في واقعنا المعاصر</p>
+
+    <div class="lessons-grid">
+      <div class="lesson-card scroll-reveal">
+        <div class="lesson-then">
+          <span class="lesson-label" data-i18n="lesson_then">الأمس</span>
+          <p data-i18n="lesson_1_then">تحول الحكم من الشورى إلى الملك الوراثي</p>
+        </div>
+        <div class="lesson-arrow">&#8594;</div>
+        <div class="lesson-now">
+          <span class="lesson-label" data-i18n="lesson_now">اليوم</span>
+          <p data-i18n="lesson_1_now">أنظمة استبدادية تتوارث السلطة وتقمع المعارضة وتنهب الثروات</p>
+        </div>
+      </div>
+
+      <div class="lesson-card scroll-reveal">
+        <div class="lesson-then">
+          <span class="lesson-label" data-i18n="lesson_then">الأمس</span>
+          <p data-i18n="lesson_2_then">إغلاق باب الاجتهاد والجمود الفكري</p>
+        </div>
+        <div class="lesson-arrow">&#8594;</div>
+        <div class="lesson-now">
+          <span class="lesson-label" data-i18n="lesson_now">اليوم</span>
+          <p data-i18n="lesson_2_now">تعليم تلقيني يقتل الإبداع — معظم الجامعات الإسلامية خارج التصنيفات العالمية</p>
+        </div>
+      </div>
+
+      <div class="lesson-card scroll-reveal">
+        <div class="lesson-then">
+          <span class="lesson-label" data-i18n="lesson_then">الأمس</span>
+          <p data-i18n="lesson_3_then">التعصب المذهبي والقبلي مزّق الأمة</p>
+        </div>
+        <div class="lesson-arrow">&#8594;</div>
+        <div class="lesson-now">
+          <span class="lesson-label" data-i18n="lesson_now">اليوم</span>
+          <p data-i18n="lesson_3_now">حروب أهلية طائفية في العراق وسوريا واليمن — والأمة عاجزة عن التوحد</p>
+        </div>
+      </div>
+
+      <div class="lesson-card scroll-reveal">
+        <div class="lesson-then">
+          <span class="lesson-label" data-i18n="lesson_then">الأمس</span>
+          <p data-i18n="lesson_4_then">الضعف الداخلي مكّن المغول والصليبيين</p>
+        </div>
+        <div class="lesson-arrow">&#8594;</div>
+        <div class="lesson-now">
+          <span class="lesson-label" data-i18n="lesson_now">اليوم</span>
+          <p data-i18n="lesson_4_now">التدخلات الأجنبية تستغل انقسام المسلمين — فلسطين أوضح مثال</p>
+        </div>
+      </div>
+
+      <div class="lesson-card scroll-reveal">
+        <div class="lesson-then">
+          <span class="lesson-label" data-i18n="lesson_then">الأمس</span>
+          <p data-i18n="lesson_5_then">انفصال العبادة عن العمل والعلم</p>
+        </div>
+        <div class="lesson-arrow">&#8594;</div>
+        <div class="lesson-now">
+          <span class="lesson-label" data-i18n="lesson_now">اليوم</span>
+          <p data-i18n="lesson_5_now">التدين الشكلي — مساجد ممتلئة لكن الفساد والظلم منتشران في كل مكان</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== QUIZ TAB ==================== -->
+  <section class="tab-panel" id="panel-quiz">
+    <h1 class="page-title" data-i18n="quiz_title">اختبار التأمل</h1>
+    <p class="page-subtitle" data-i18n="quiz_subtitle">هل تفهم لماذا تراجعت الأمة؟</p>
+
+    <div class="quiz-container" id="quizContainer">
+      <!-- Quiz questions will be rendered by JS -->
+    </div>
+    <div class="quiz-results hidden" id="quizResults">
+      <div class="quiz-score-circle">
+        <span class="quiz-score-number" id="quizScoreNum">0</span>
+        <span class="quiz-score-total">/8</span>
+      </div>
+      <p class="quiz-result-msg" id="quizResultMsg"></p>
+      <button class="quiz-retry-btn" id="quizRetryBtn" data-i18n="quiz_retry">أعد الاختبار</button>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT TAB ==================== -->
+  <section class="tab-panel active" id="panel-about">
+    <h1 class="page-title" data-i18n="about_title">عن الكتاب والمؤلف</h1>
+
+    <div class="about-section">
+      <div class="about-card scroll-reveal">
+        <h2 data-i18n="book_info_title">📖 عن الكتاب</h2>
+        <div class="about-detail">
+          <p data-i18n="book_info_1"><strong>الاسم:</strong> سر تأخر العرب والمسلمين</p>
+          <p data-i18n="book_info_2"><strong>المؤلف:</strong> الشيخ محمد الغزالي (1917-1996)</p>
+          <p data-i18n="book_info_3"><strong>الحجم:</strong> 133 صفحة — أكثف كتب الغزالي</p>
+          <p data-i18n="book_info_4"><strong>الموضوع:</strong> تتبع زمني لتراجع الأمة الإسلامية من نهاية الخلافة الراشدة إلى العصر الحديث. يحلل الأسباب الداخلية للتخلف ويقدم رؤية للنهضة.</p>
+          <p data-i18n="book_info_5"><strong>الأسلوب:</strong> مباشر وجريء. الغزالي لا يجامل أحدا — لا الحكام ولا العلماء ولا العامة. يضع المرآة أمام الجميع.</p>
+        </div>
+      </div>
+
+      <div class="about-card scroll-reveal">
+        <h2 data-i18n="author_bio_title">👤 عن المؤلف</h2>
+        <div class="about-detail">
+          <p data-i18n="author_bio_1">الشيخ محمد الغزالي (1917-1996) عالم ومفكر إسلامي مصري من أبرز علماء القرن العشرين. ولد في قرية "نكلا العنب" بمحافظة البحيرة في مصر.</p>
+          <p data-i18n="author_bio_2">تخرج من الأزهر الشريف وألف أكثر من 60 كتابا في الفكر الإسلامي. عُرف بجرأته في نقد التخلف الفكري والسياسي في العالم الإسلامي.</p>
+          <p data-i18n="author_bio_3">من أشهر كتبه: "فقه السيرة"، "جدد حياتك"، "خلق المسلم"، "الإسلام والاستبداد السياسي".</p>
+          <p data-i18n="author_bio_4">توفي رحمه الله عام 1996 في الرياض أثناء حضوره مؤتمرا علميا. ترك إرثا فكريا ضخما يجمع بين الأصالة والتجديد.</p>
+        </div>
+      </div>
+
+      <div class="about-card disclaimer-card scroll-reveal">
+        <h2 data-i18n="disclaimer_title">⚠️ تنبيه مهم</h2>
+        <div class="about-detail">
+          <p data-i18n="disclaimer_1">لست عالما ولا فقيها. هذا جهد متواضع من أب/أم مسلم/ة يريد تقديم أفكار هذا الكتاب القيم بطريقة سهلة ومبسطة.</p>
+          <p data-i18n="disclaimer_2">المحتوى مستمد من الكتاب ومن مصادر إسلامية موثوقة. هذا ليس فتوى ولا يغني عن قراءة الكتاب الأصلي والرجوع لأهل العلم.</p>
+          <p data-i18n="disclaimer_3">إن أصبت فمن الله، وإن أخطأت فمن نفسي والشيطان.</p>
+        </div>
+      </div>
+
+      <div class="about-card scroll-reveal">
+        <h2 data-i18n="sources_title">📚 المصادر</h2>
+        <div class="about-detail">
+          <ul>
+            <li data-i18n="source_1">كتاب "سر تأخر العرب والمسلمين" — الشيخ محمد الغزالي</li>
+            <li data-i18n="source_2">القرآن الكريم</li>
+            <li data-i18n="source_3">مصادر تاريخية إسلامية متنوعة</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Bottom Tab Bar -->
+<nav class="bottom-tabs" id="bottomTabs">
+    <div class="tabs-meta"><div class="ticker-wrap"><div class="ticker-text" id="tickerText"></div></div></div>
+    <div class="tabs-row">
+      <button class="tab-btn" data-tab="home" data-sound="tab">
+    <span class="tab-icon">🏠</span>
+    <span class="tab-label" data-i18n="tab_home">الرئيسية</span>
+  </button>
+  <button class="tab-btn" data-tab="timeline" data-sound="tab">
+    <span class="tab-icon">📜</span>
+    <span class="tab-label" data-i18n="tab_timeline">المسار</span>
+  </button>
+  <button class="tab-btn" data-tab="causes" data-sound="tab">
+    <span class="tab-icon">🔍</span>
+    <span class="tab-label" data-i18n="tab_causes">الأسباب</span>
+  </button>
+  <button class="tab-btn" data-tab="solutions" data-sound="tab">
+    <span class="tab-icon">💡</span>
+    <span class="tab-label" data-i18n="tab_solutions">الحلول</span>
+  </button>
+  <button class="tab-btn" data-tab="lessons" data-sound="tab">
+    <span class="tab-icon">📋</span>
+    <span class="tab-label" data-i18n="tab_lessons">دروس</span>
+  </button>
+  <button class="tab-btn" data-tab="quiz" data-sound="tab">
+    <span class="tab-icon">📝</span>
+    <span class="tab-label" data-i18n="tab_quiz">اختبار</span>
+  </button>
+  <button class="tab-btn active" data-tab="about" data-sound="tab">
+    <span class="tab-icon">📖</span>
+    <span class="tab-label" data-i18n="tab_about">عن الكتاب</span>
+  </button>
+    </div></nav>
+
+<!-- Scroll to Top -->
+<button class="scroll-top-btn" id="scrollTopBtn" title="Scroll to top" aria-label="Scroll to top">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<!-- Dua Float -->
+<div class="dua-float" id="duaFloat">
+  <span class="dua-text">اللهم أصلح أحوال المسلمين</span>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Help Modal -->
+<div class="modal-overlay" id="helpModal">
+  <div class="modal-content glass-panel">
+    <button class="modal-close" id="helpClose">&times;</button>
+    <h2 data-i18n="help_title">🪞 المساعدة</h2>
+    <div class="help-body">
+      <p data-i18n="help_1">مرحبا بك في تطبيق "المرآة" — ملخص تفاعلي لكتاب "سر تأخر العرب والمسلمين" للشيخ محمد الغزالي رحمه الله.</p>
+      <h3 data-i18n="help_nav_title">التنقل:</h3>
+      <ul>
+        <li data-i18n="help_nav_1">🏠 الرئيسية: نظرة عامة ودورة التراجع</li>
+        <li data-i18n="help_nav_2">📜 المسار: خط زمني تفاعلي لأحداث التراجع</li>
+        <li data-i18n="help_nav_3">🔍 الأسباب: تحليل أسباب التخلف الثمانية</li>
+        <li data-i18n="help_nav_4">💡 الحلول: رؤية الغزالي للنهوض</li>
+        <li data-i18n="help_nav_6">📋 دروس اليوم: كيف يتجلى التاريخ في واقعنا</li>
+        <li data-i18n="help_nav_7">📝 اختبار التأمل: اختبر فهمك لأسباب التراجع</li>
+        <li data-i18n="help_nav_5">📖 عن الكتاب: معلومات عن الكتاب والمؤلف</li>
+      </ul>
+      <h3 data-i18n="help_features_title">المميزات:</h3>
+      <ul>
+        <li data-i18n="help_feature_1">ثلاث لغات: عربي، إنجليزي، فرنسي</li>
+        <li data-i18n="help_feature_2">ثلاثة أنماط: مرآة، تاريخ، أمل</li>
+        <li data-i18n="help_feature_3">اضغط على البطاقات لقراءة التفاصيل</li>
+        <li data-i18n="help_feature_4">يمكن تفعيل/إيقاف الصوت</li>
+        <li data-i18n="help_feature_5">شريط زمني تفاعلي أفقي في الأعلى</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Flowchart Detail Modal -->
+<div class="modal-overlay" id="flowDetailModal">
+  <div class="modal-content flow-detail-modal">
+    <button class="modal-close" id="flowDetailClose">&times;</button>
+    <div class="flow-detail-icon" id="flowDetailIcon"></div>
+    <h2 id="flowDetailTitle"></h2>
+    <p id="flowDetailText"></p>
+  </div>
+</div>
+
+<!-- Footer -->
+
+<!-- Geometric SVG Background -->
+<svg class="geo-bg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" aria-hidden="true">
+  <defs>
+    <pattern id="geoPattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <polygon points="30,0 60,15 60,45 30,60 0,45 0,15" fill="none" stroke="currentColor" stroke-width="0.3" opacity="0.08"/>
+      <circle cx="30" cy="30" r="4" fill="none" stroke="currentColor" stroke-width="0.3" opacity="0.06"/>
+      <line x1="30" y1="0" x2="30" y2="60" stroke="currentColor" stroke-width="0.15" opacity="0.04"/>
+      <line x1="0" y1="30" x2="60" y2="30" stroke="currentColor" stroke-width="0.15" opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#geoPattern)"/>
+</svg>
+
+<!-- Particles Canvas -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- Reading Mode Button -->
+<button class="reading-mode-btn" id="readingModeBtn" title="Reading Mode" aria-label="Toggle Reading Mode">&#128214;</button>
+
+<!-- Mirror Crack Overlay (injected into .mirror-frame by JS) -->
+
+<script src="app.js"></script>
+<script src="genius.js"></script><script>document.addEventListener('DOMContentLoaded',function(){if(window.geniusInit)geniusInit({particles:{color1:'rgba(192,192,192,0.2)',color2:'rgba(26,35,126,0.12)',count:18},appKey:'miraat',darkTheme:'history'})});</script>
+</body>
+</html>
