@@ -2431,3 +2431,18 @@ body.reading-mode .tab-panel {
 .narrator-speak-btn:hover{opacity:1;background:rgba(26,35,126,.25);transform:scale(1.15)}
 .narrator-panel *{color:#eee!important}.narrator-panel select{background:#1a1a2e!important;color:#eee!important;border-color:rgba(255,255,255,.2)!important}.narrator-panel .narrator-title{color:#ffcc80!important}.narrator-panel .narrator-mode-btn{color:#eee!important;background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.15)!important}.narrator-panel .narrator-mode-btn:hover{background:rgba(255,255,255,.15)!important}.narrator-panel input[type=range]{accent-color:#ffcc80}
 [data-theme="history"] .about-card,[data-theme="history"] .cause-card,[data-theme="history"] .timeline-card,[data-theme="history"] .solution-card,[data-theme="history"] .lesson-card{color:var(--t1,#D7CCC8)!important}
+/* Fix header overflow on mobile */
+@media(max-width:420px){
+  header,.app-header,.hdr{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  header .header-inner,.app-header .header-inner,.hdr .hdr-r,.header-controls,.header-right,.top-bar-right{flex-wrap:nowrap;gap:4px!important}
+  header button,.app-header button,.hdr button{min-width:28px!important;width:28px!important;height:28px!important;font-size:.8rem!important;padding:2px!important}
+  header .lang-opt,.app-header .lang-opt,.hdr .lang-opt,.lang-opt{min-width:24px!important;width:24px!important}
+  header .lang-opt svg,.app-header .lang-opt svg,.hdr .lang-opt svg,.lang-opt svg{width:16px!important;height:11px!important}
+}
+/* Fix tabs overflow on mobile */
+@media(max-width:420px){
+  .tabs-row,.btabs{overflow-x:auto!important;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap!important}
+  .tabs-row::-webkit-scrollbar,.btabs::-webkit-scrollbar{display:none}
+  .tab,.tab-btn,.btab{font-size:.65rem!important;padding:6px 8px!important;min-width:auto!important;white-space:nowrap}
+  .tab .tl,.tab-btn .tab-label,.btab{font-size:.6rem!important}
+}
