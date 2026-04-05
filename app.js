@@ -1085,7 +1085,7 @@
     // Show results
     var results = document.getElementById('quizResults');
     results.classList.remove('hidden');
-    document.getElementById('quizScoreNum').textContent = score;
+    { const _e=document.getElementById('quizScoreNum'); if(_e) _e.textContent=score; }
 
     var msg = '';
     var translations = T[currentLang];
@@ -1094,7 +1094,7 @@
     else if (score >= 3) msg = translations.quiz_result_4;
     else msg = translations.quiz_result_0;
 
-    document.getElementById('quizResultMsg').textContent = msg;
+    { const _e=document.getElementById('quizResultMsg'); if(_e) _e.textContent=msg; }
 
     // Scroll to results
     results.scrollIntoView({ behavior: 'smooth', block: 'center' });
