@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="genius.css">
+<link rel="manifest" href="manifest.json">
 </head>
 <body>
 
@@ -151,110 +152,7 @@
 <main class="main-content" id="mainContent">
 
   <!-- ==================== HOME TAB ==================== -->
-  <section class="tab-panel" id="panel-home">
-    <div class="home-hero">
-      <div class="mirror-frame">
-        <div class="mirror-glass">
-          <div class="mirror-reflection"></div>
-          <div class="mirror-shimmer"></div>
-          <div class="mirror-text">🪞</div>
-        </div>
-      </div>
-      <h1 class="hero-title" data-i18n="home_title">المرآة</h1>
-      <p class="hero-subtitle" data-i18n="home_subtitle">انظر بصدق... أين أخطأنا؟</p>
-      <p class="hero-desc" data-i18n="home_desc">هذا الكتاب مرآة صادقة يضعها الشيخ محمد الغزالي أمام الأمة الإسلامية. ليس لجلد الذات، بل لفهم ما حدث حتى نستطيع النهوض من جديد.</p>
-      <div class="typewriter-container" id="typewriterContainer">
-        <span class="typewriter-text" id="typewriterText"></span><span class="typewriter-cursor" id="typewriterCursor"></span>
-      </div>
-    </div>
-
-    <!-- Cause & Effect Flowchart -->
-    <div class="flowchart-section">
-      <h2 class="section-title" data-i18n="flowchart_title">دورة التراجع</h2>
-      <p class="section-subtitle" data-i18n="flowchart_subtitle">كيف يغذي كل سبب الآخر في حلقة مفرغة</p>
-      <div class="flowchart" id="interactiveFlowchart">
-        <div class="flow-node flow-node-1 flow-clickable" data-flow-detail="flow_political_full">
-          <div class="flow-icon">👑</div>
-          <div class="flow-label" data-i18n="flow_political">فساد سياسي</div>
-          <div class="flow-detail" data-i18n="flow_political_detail">تحول الحكم من شورى إلى ملك وراثي</div>
-          <div class="flow-expanded-detail" data-i18n="flow_political_full">تحول نظام الحكم من الشورى والمحاسبة إلى ملك وراثي جعل السلطة مركزة في يد عائلات حاكمة. هذا الفساد السياسي أنتج ظلما اجتماعيا وقمعا للمعارضة وإفسادا للعلماء الذين إما سكتوا خوفا أو تحولوا إلى أدوات للسلطة.</div>
-        </div>
-        <div class="flow-arrow flow-arrow-animated">&#8595;</div>
-        <div class="flow-node flow-node-2 flow-clickable" data-flow-detail="flow_intellectual_full">
-          <div class="flow-icon">📚</div>
-          <div class="flow-label" data-i18n="flow_intellectual">جمود فكري</div>
-          <div class="flow-detail" data-i18n="flow_intellectual_detail">إغلاق باب الاجتهاد والتقليد الأعمى</div>
-          <div class="flow-expanded-detail" data-i18n="flow_intellectual_full">إغلاق باب الاجتهاد حوّل الفكر الإسلامي من حركة حية متجددة إلى تقليد جامد. العلماء صاروا يكررون أقوال السابقين دون تفكير نقدي. العلوم التجريبية والفلسفة أصبحت مشبوهة. الإبداع توقف بينما العالم يتغير.</div>
-        </div>
-        <div class="flow-arrow flow-arrow-animated">&#8595;</div>
-        <div class="flow-node flow-node-3 flow-clickable" data-flow-detail="flow_spiritual_full">
-          <div class="flow-icon">💔</div>
-          <div class="flow-label" data-i18n="flow_spiritual">فراغ روحي</div>
-          <div class="flow-detail" data-i18n="flow_spiritual_detail">انفصال العبادة عن الحياة اليومية</div>
-          <div class="flow-expanded-detail" data-i18n="flow_spiritual_full">انفصال العبادة عن الحياة اليومية جعل الدين مجرد طقوس شكلية. المسلم يصلي لكن لا يتقن عمله. يصوم لكن لا يعدل في تعامله. الروحانية الحقيقية التي تدفع للعمل والإتقان غابت وحلت محلها روحانية سلبية تنتظر المعجزات.</div>
-        </div>
-        <div class="flow-arrow flow-arrow-animated">&#8595;</div>
-        <div class="flow-node flow-node-4 flow-clickable" data-flow-detail="flow_cycle_full">
-          <div class="flow-icon">🔄</div>
-          <div class="flow-label" data-i18n="flow_cycle">تكرار الحلقة</div>
-          <div class="flow-detail" data-i18n="flow_cycle_detail">الفراغ الروحي يعيد إنتاج الفساد السياسي</div>
-          <div class="flow-expanded-detail" data-i18n="flow_cycle_full">الفراغ الروحي يجعل الناس تقبل الظلم وتستسلم للواقع. هذا القبول يشجع الفاسدين على مزيد من الفساد. والفساد بدوره يزيد الجمود الفكري والفراغ الروحي. وهكذا تستمر الحلقة المفرغة جيلا بعد جيل.</div>
-        </div>
-        <div class="flow-arrow flow-arrow-back">&#8593; <span data-i18n="flow_back">العودة للبداية</span></div>
-      </div>
-    </div>
-
-    <!-- Book Quick Stats -->
-    <div class="quick-stats">
-      <div class="stat-card scroll-reveal">
-        <div class="stat-number">١٣٣</div>
-        <div class="stat-label" data-i18n="stat_pages">صفحة</div>
-      </div>
-      <div class="stat-card scroll-reveal">
-        <div class="stat-number">٨</div>
-        <div class="stat-label" data-i18n="stat_causes">أسباب رئيسية</div>
-      </div>
-      <div class="stat-card scroll-reveal">
-        <div class="stat-number">١٣٠٠+</div>
-        <div class="stat-label" data-i18n="stat_years">سنة من التاريخ</div>
-      </div>
-    </div>
-
-    <!-- Compare Eras Feature -->
-    <div class="compare-eras-section scroll-reveal">
-      <h2 class="section-title" data-i18n="compare_title">مقارنة العصور</h2>
-      <p class="section-subtitle" data-i18n="compare_subtitle">الخلافة الراشدة مقابل الحكم المعاصر</p>
-      <div class="compare-grid">
-        <div class="compare-card compare-rashidun">
-          <div class="compare-header era-golden-bg">
-            <span class="compare-era-icon">🌟</span>
-            <h3 data-i18n="compare_rashidun">الخلافة الراشدة</h3>
-          </div>
-          <ul class="compare-list">
-            <li data-i18n="compare_r1">الحاكم يُختار بالشورى ويُحاسب</li>
-            <li data-i18n="compare_r2">بيت المال للجميع — الحاكم لا يأخذ أكثر من حاجته</li>
-            <li data-i18n="compare_r3">حرية النقد — "لو أخطأت فقوموني"</li>
-            <li data-i18n="compare_r4">العلماء مستقلون عن السلطة</li>
-            <li data-i18n="compare_r5">المساواة بين الأعراق والطبقات</li>
-          </ul>
-        </div>
-        <div class="compare-vs">VS</div>
-        <div class="compare-card compare-modern">
-          <div class="compare-header era-modern-bg">
-            <span class="compare-era-icon">🏛️</span>
-            <h3 data-i18n="compare_modern">الحكم المعاصر</h3>
-          </div>
-          <ul class="compare-list">
-            <li data-i18n="compare_m1">السلطة تُورَّث أو تُفرض بالقوة</li>
-            <li data-i18n="compare_m2">ثروات الأمة تُنهب من القلة الحاكمة</li>
-            <li data-i18n="compare_m3">قمع المعارضة والرأي الآخر</li>
-            <li data-i18n="compare_m4">العلماء تابعون للسلطة أو مهمشون</li>
-            <li data-i18n="compare_m5">تمييز عرقي وطبقي واسع الانتشار</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ==================== TIMELINE TAB ==================== -->
   <section class="tab-panel" id="panel-timeline">
@@ -929,10 +827,7 @@
 <nav class="bottom-tabs" id="bottomTabs">
     <div class="tabs-meta"><div class="ticker-wrap"><div class="ticker-text" id="tickerText"></div></div></div>
     <div class="tabs-row">
-      <button class="tab-btn" data-tab="home" data-sound="tab">
-    <span class="tab-icon">🏠</span>
-    <span class="tab-label" data-i18n="tab_home">الرئيسية</span>
-  </button>
+      
   <button class="tab-btn" data-tab="timeline" data-sound="tab">
     <span class="tab-icon">📜</span>
     <span class="tab-label" data-i18n="tab_timeline">المسار</span>
